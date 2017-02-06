@@ -24,11 +24,11 @@ chai.use(chaiHttp);
 const ALGEBRA_BANK_ID = 'assessment.Bank%3A576d6d3271e4828c441d721a%40bazzim.MIT.EDU';
 const ACCOUNTING_BANK_ID = 'assessment.Bank%3A57d70ed471e482a74879349a%40bazzim.MIT.EDU';
 
-const STUDENT_ID = 'LUWEEZY@fbw-visitor.edu'
-const PRIVATE_ALGEBRA_BANK_ID = 'assessment.Bank%3A5850599e71e4824fcc9d345f%40bazzim.MIT.EDU'
-const ASSIGNED_BANK_ID = "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU";
+// const STUDENT_ID = 'LUWEEZY@fbw-visitor.edu'
+// const PRIVATE_ALGEBRA_BANK_ID = 'assessment.Bank%3A5850599e71e4824fcc9d345f%40bazzim.MIT.EDU'
+// const ASSIGNED_BANK_ID = "assessment.Bank%3A581a39cd71e4822fa62c96cd%40bazzim.MIT.EDU";
 const OFFERED_ID = "assessment.AssessmentOffered%3A5855473871e4823bce25a7fd%40bazzim.MIT.EDU";    // the internal test mission
-const SECTION_ID = "assessment.AssessmentSection%3A5855518171e4823bce25aa7f%40bazzim.MIT.EDU";    // the first directive: if two lines are parallel
+// const SECTION_ID = "assessment.AssessmentSection%3A5855518171e4823bce25aa7f%40bazzim.MIT.EDU";    // the first directive: if two lines are parallel
 
 // for testing closed missions
 const STUDENT_ID_2 = 'I01791513@acc.edu'
@@ -36,12 +36,21 @@ const OFFERED_ID_2 = "assessment.AssessmentOffered%3A57fd15ab71e48240ccf2c09d%40
 
 // for testing image in reponse feedback solution
 // to be used with LUWEEZY
-const SECTION_ID_2 = "assessment.AssessmentSection%3A5882769c71e48271b25c3c52%40bazzim.MIT.EDU"
-const WRONG_QUESTION_ID = "assessment.Item%3A5882769c71e48271b25c3c5f%40assessment-session";
-const WRONG_CHOICE_ID = "57f5353c71e482499fa84275";
+// const SECTION_ID_2 = "assessment.AssessmentSection%3A5882769c71e48271b25c3c52%40bazzim.MIT.EDU"
+// const WRONG_QUESTION_ID = "assessment.Item%3A5882769c71e48271b25c3c5f%40assessment-session";
+// const WRONG_CHOICE_ID = "57f5353c71e482499fa84275";
+// const SHOW_ANSWER_SECTION_ID = "assessment.AssessmentSection%3A57ffaea371e48240ccf2c8fa%40bazzim.MIT.EDU"
+// const SHOW_ANSWER_QUESTION_ID = "assessment.Item%3A57ffaea371e48240ccf2c8fc%40assessment-session"
 
-const SHOW_ANSWER_SECTION_ID = "assessment.AssessmentSection%3A57ffaea371e48240ccf2c8fa%40bazzim.MIT.EDU"
-const SHOW_ANSWER_QUESTION_ID = "assessment.Item%3A57ffaea371e48240ccf2c8fc%40assessment-session"
+//  To test images
+const STUDENT_ID = 'Mxxxxxxx-Mxxxxxxx Axxxxxxx-1xxxxxxx@fbw-visitor.edu'
+const SECTION_ID = "assessment.AssessmentSection%3A58989a7871e48280348ce94e%40bazzim.MIT.EDU";    // the first directive: if two lines are parallel
+const SECTION_ID_2 = "assessment.AssessmentSection%3A58989a7871e48280348ce956%40bazzim.MIT.EDU"
+const WRONG_QUESTION_ID = "assessment.Item%3A58989a7971e48280348ce974%40assessment-session";
+const WRONG_CHOICE_ID = "583f020971e482974e516fae";
+const SHOW_ANSWER_SECTION_ID = "assessment.AssessmentSection%3A58989dd171e48280353954b5%40bazzim.MIT.EDU"
+const SHOW_ANSWER_QUESTION_ID = "assessment.Item%3A58989dd271e48280353954c2%40assessment-session"
+
 
 // describe statements should state the intent of this whole spec file
 describe('convert image paths utility method', function() {
