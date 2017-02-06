@@ -8,6 +8,9 @@ import {selectClosedMission} from '../selectClosedMission'
 import {submitResponse} from '../submitResponse'
 import {showAnswer} from '../showAnswer'
 
+import {createBaseQBankStudentAuthorizations} from '../../Login/logInUser'
+import {selectBank} from '../../Bank/selectBank'
+
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 const middlewares = [ thunk ]
@@ -55,6 +58,21 @@ const SHOW_ANSWER_QUESTION_ID = "assessment.Item%3A58989dd271e48280353954c2%40as
 // describe statements should state the intent of this whole spec file
 describe('convert image paths utility method', function() {
   this.timeout(1000*10);
+
+  before((done) => {
+    // need to make sure the authz is set up for our M test user, which
+    //   is not possible to do via UI, because the UI strips out
+    //   whitespace from visitor usernames
+    createBaseQBankStudentAuthorizations(STUDENT_ID)
+    .then(() => {
+      const store = mockStore({});
+
+      return store.dispatch(selectBank({id: ALGEBRA_BANK_ID}, STUDENT_ID))
+    })
+    .then(() => {
+      done()
+    })
+  })
 
   it('should be invoked for getting an open mission', function (done) {
     // verify that getting a mission with images in the questions

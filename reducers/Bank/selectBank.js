@@ -34,7 +34,7 @@ export function selectBank(bank, username) {
     // we need to make sure this is set-up at least one-time for each user / termBank...
     return axios(options)
     .then((privateBankId) => {
-      console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);
+      // console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);
 
       // dispatch(receiveSelectSubject(privateBankId.data))
       // let's keep the termBankId in the state tree, since we can now
