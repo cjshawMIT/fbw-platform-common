@@ -130,8 +130,9 @@ export function enrollments (credentials, url) {
   let enrollmentsUrl = '/d2l/api/lp/1.14/enrollments/myenrollments/'
   let options
   if (process.env.NODE_ENV === 'test') {
+    let testBackend = process.env.TEST_BACKEND || 'http://localhost:8888';
     options = {
-      url: `http://localhost:8888/mock-d2l${enrollmentsUrl}?${_appendDevRole(credentials)}`
+      url: `${testBackend}/mock-d2l${enrollmentsUrl}?${_appendDevRole(credentials)}`
     }
   } else {
     // 3 = Course Offering, I think
@@ -203,8 +204,9 @@ export function whoami(credentials, url) {
   let options
 
   if (process.env.NODE_ENV === 'test') {
+    let testBackend = process.env.TEST_BACKEND || 'http://localhost:8888';
     options = {
-      url: `http://localhost:8888/mock-d2l${whoamiUrl}?${_appendDevRole(credentials)}&sNumber=S99999991`
+      url: `${testBackend}/mock-d2l${whoamiUrl}?${_appendDevRole(credentials)}&sNumber=S99999991`
     }
   } else {
     options = {
