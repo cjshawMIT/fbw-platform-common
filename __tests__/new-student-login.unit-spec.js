@@ -26,7 +26,7 @@ const MAT_BANK_ID = 'assessment.Bank%3A58498ccb71e482e47e0ed8ce%40bazzim.MIT.EDU
 const TEST_MISSION_ID = 'assessment.Assessment%3A587da23a71e48213e43f97b2%40bazzim.MIT.EDU'  // DEMO_TUTORIAL_MISSION
 const TEST_MISSION_OFFERED_ID = 'assessment.AssessmentOffered%3A587da23b71e48213e63ba8c5%40bazzim.MIT.EDU'  // DEMO_TUTORIAL_MISSION
 
-const BASE_URL = 'https://fbw-web-backend-dev.herokuapp.com'
+const BASE_URL = process.env.TEST_BACKEND || 'example.com';
 
 const UNIQUE_USERNAME = Math.floor(new Date().getTime()).toString()
 const FAKE_SCHOOL = "testing"

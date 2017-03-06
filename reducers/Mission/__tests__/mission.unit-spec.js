@@ -4,9 +4,7 @@ let chai = require('chai');
 let should = require('should');
 chai.should();
 const chaiHttp = require('chai-http');
-chai.should();
-
-const _ = require('lodash')
+chai.use(chaiHttp);
 
 import {RECEIVE_MISSIONS} from '../getMissions'
 import {SELECT_DIRECTIVE} from '../selectDirective'
@@ -105,7 +103,7 @@ describe('mission reducer', () => {
     });
 
     newState.missions.length.should.eql(1);
-    newState.missions[0].id.should.be.eql('bar')
+    newState.missions[0].id.should.be.eql('bar');
   });
 
   it('should update state upon SELECT_MISSION_RESULT', () => {
@@ -125,7 +123,7 @@ describe('mission reducer', () => {
 
     newState.currentMissionSections.length.should.eql(2);
     newState.currentDirectiveIndex.should.eql(1);
-    newState.currentTarget.id.should.eql('superman')
+    newState.currentTarget.id.should.eql('superman');
   });
 
   it('should clear everything in this part of mission state upon LOG_OUT', () => {

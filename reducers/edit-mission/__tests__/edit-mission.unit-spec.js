@@ -25,7 +25,7 @@ const chaiHttp = require('chai-http');
 let should = require('should');
 chai.should();
 chai.use(chaiHttp);
-const BASE_URL = 'https://fbw-web-backend-dev.herokuapp.com' // for verifying some stuff...
+const BASE_URL = process.env.TEST_BACKEND || 'example.com' // for verifying some stuff...
 
 const directives = [
   {

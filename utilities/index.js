@@ -17,27 +17,28 @@ export const isBrowser = () => {
 }
 
 export const getDomain = () => {
-  // if it's browser or someone is running a headless test without window var
-  if (isBrowser() || process.env.NODE_ENV === 'test') {
-    if (process.env.NODE_ENV === 'production') {
-      let host = window.location.host;
+  // // if it's browser or someone is running a headless test without window var
+  // if (isBrowser() || process.env.NODE_ENV === 'test') {
+  //   if (process.env.NODE_ENV === 'production') {
+  //     let host = window.location.host;
+  //
+  //     if (host === 'adaptive-instructor.mit.edu' || host === 'adaptive.mit.edu') {
+  //       return 'https://adaptive-assessments.herokuapp.com';
+  //
+  //     // if webapp is running on *-dev, route to -dev middleman
+  //     } else {
+  //       return 'https://adaptive-assessments-dev.herokuapp.com';
+  //     }
+  //   }
+  //
+  //   // call against the local middleman in 'test' and 'dev' environments
+  //   return 'http://localhost:8888';
+  // }
 
-      if (host === 'fbw-instructor.mit.edu' || host === 'fbw-student.mit.edu') {
-        return 'https://fbw-web-backend.herokuapp.com';
-
-      // if webapp is running on *-dev, route to -dev middleman
-      } else {
-        return 'https://fbw-web-backend-dev.herokuapp.com';
-      }
-    }
-
-    // call against the local middleman in 'test' and 'dev' environments
-    return 'http://localhost:8888';
-  }
-
-  // call against production for mobile because I don't know how to detect if something is running
-  // on simulator or device in a piece of common code
-  return 'https://fbw-web-backend.herokuapp.com';
+  // For now, not sure how this will work with native -- assume
+  //   using web browser, not native app? Otherwise will have to re-work
+  //   how the environment gets injected.
+  return process.env.BACKEND || 'http://localhost:8888';
 }
 
 export const matches = (needle, haystack) => {

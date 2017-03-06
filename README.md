@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mitsei/fbw-platform-common.svg?branch=master)](https://travis-ci.org/mitsei/fbw-platform-common)  [![Coverage Status](https://coveralls.io/repos/github/mitsei/fbw-platform-common/badge.svg?branch=master)](https://coveralls.io/github/mitsei/fbw-platform-common?branch=master)
 
 # Fly-by-Wire components common to Instructor and Students (web + mobile)
 
@@ -53,3 +54,9 @@ To inspect the environment variables in each app, do:
 ```
 heroku config --remote [dev or production]
 ```
+
+## Backend
+
+This library assumes that you specify the backend URL via `process.env.BACKEND`.
+The default backend is `localhost:8888`, if you are running the 
+`adaptive-backend` repo locally.
