@@ -9,7 +9,7 @@ import {getMapping} from '../../selectors'
 const mapStateToProps = (state, ownProps) => {
 
   let targets;
-  if (state.mission.currentMissionSections && typeof state.mission.currentDirectiveIndex !== 'undefined') {
+  if (state.mission.currentMissionSections && state.mission.currentDirectiveIndex !== null) {
     // console.log('state in TargetCarouselContainer', state);
 
     let allQuestions = state.mission.currentMissionSections[state.mission.currentDirectiveIndex].questions
