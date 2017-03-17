@@ -68,7 +68,7 @@ class Login extends Component {
 
         <div className="school-buttons flex-container space-between medium-8 medium-centered columns">
           <button disabled
-            className="login-form-button login-form-button--d2l flex-container align-center">
+            className="login-form-button login-form-button--d2l is-disabled">
             Arapahoe <img className="d2l-login-button__image" src={require('../../../assets/myACC.png')} />
           </button>
           <button disabled
