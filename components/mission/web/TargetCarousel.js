@@ -78,6 +78,7 @@ class TargetCarousel extends Component {
     // let totalQuestions = this.props.targets.length || 0,
       // requiredAccessibilityLabel = `Required: ${this.props.requiredNumber} of ${totalQuestions}`;
     if (!this.props.targets ||
+        !this.props.currentDirectiveIndex ||
         (this.props.targets && this.props.targets.length === 0)) {
       return (
         <div></div>
