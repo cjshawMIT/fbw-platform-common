@@ -100,7 +100,7 @@ export default function missionReducer (state = initialState, action) {
       return _.assign({}, state, {
         resultsExistForUser: true,
         currentMissionSections: action.mission,
-        currentDirectiveIndex: 0,
+        currentDirectiveIndex: null,
         isSubmitTakeMissionInProgress: false
       });
 
