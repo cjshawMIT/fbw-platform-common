@@ -15,7 +15,7 @@ branches:
 
 before_install:
   - export TZ=America/New_York
-  - npm install -g yarn
+  - npm install -g --production yarn
 
 # command to install dependencies
 install:
