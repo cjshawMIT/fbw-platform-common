@@ -31,7 +31,7 @@ export function selectOpenMission (data) {
     dispatch(openMissionOptimistic(data.mission))
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.bankId}/offereds/${data.mission.assessmentOfferedId}/takeMission`,
+      url: `${getDomain()}/middleman/banks/${data.bankId}/offereds/${data.mission.assessmentOfferedId}/takeMission?sectionsOnly=true`,
       headers: {
         'x-fbw-username': data.username
       }

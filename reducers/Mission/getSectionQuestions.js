@@ -30,39 +30,18 @@ export function getSectionQuestions (data) {
     dispatch(getSectionQuestionsOptimistic())
 
     let options = {
-      url: `${getDomain()}/middleman/banks/${data.mission.assignedBankIds[0]}/sections/${data.sectionId}/questions`,
+      url: `${getDomain()}/middleman/banks/${data.bankId}/sections/${data.sectionId}/questions`,
       headers: {
         'x-fbw-username': data.username
       }
     }
 
     return axios(options)
-    .then(({data: questions}) => {
+    .then(({ data: questions }) => {
       dispatch(receiveSectionQuestions(questions))
     })
     .catch((error) => {
       console.log('error getting section questions', error)
     })
   }
-}
-
-function _getPrivateBankId(data) {
-  let options = {
-    url: `${getDomain()}/middleman/banks/${data.subjectBankId}/privatebankid`,
-    headers: {
-      'x-fbw-username': data.username
-    }
-  }
-
-  return axios(options)
-  .then((privateBankId) => {
-    // console.log('got from middleman the selected subject\'s privateBankId of:', privateBankId);
-
-    save('privateBankId', privateBankId.data)
-
-    return privateBankId.data;
-  })
-  .catch((error) => {
-    console.log('error getting private bank id', error)
-  })
 }

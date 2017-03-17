@@ -14,7 +14,9 @@ class DirectiveCarousel extends Component {
     let indicatorText;
     if (this.props.directiveIndicators) {
       let indicator = this.props.directiveIndicators[idx];
-      indicatorText = `${indicator.numerator || '--'}/${indicator.denominator}`;
+      if (indicator.denominator !== 0) {
+        indicatorText = `${indicator.numerator || '--'}/${indicator.denominator}`;
+      }
     }
 
     let displayName = directive ? directive.displayName.text : 'Error. Somehow this outcome is undefined';
@@ -23,7 +25,7 @@ class DirectiveCarousel extends Component {
     let thumb = (
       <div key={idx}
           className={isActive ? "carousel-thumb is-active carousel-thumb--directive" : "carousel-thumb carousel-thumb--directive"}>
-        <button className="carousel-thumb__button" onClick={() => this.props.onSelectDirective(idx)}
+        <button className="carousel-thumb__button" onClick={() => this._onSelectDirective(idx)}
                 aria-label={`Learning Outcome: ${displayName}`}>
           <div className="flex-container align-bottom space-between prewrap">
             <span className="carousel-thumb__icon">{indicatorText}</span>
@@ -67,6 +69,15 @@ class DirectiveCarousel extends Component {
       </div>
 
     )
+  }
+
+  _onSelectDirective = (directiveIndex) => {
+    this.props.onGetSectionQuestions({
+      bankId: this.props.bank.id,
+      sectionId: this.props.currentMissionSections[directiveIndex].id,
+      username: this.props.user.username
+    });
+    this.props.onSelectDirective(directiveIndex);
   }
 }
 

@@ -58,7 +58,7 @@ class TargetCarousel extends Component {
       // the new button refs kept being appended
     }
     let thumb = (
-      <li key={target.id} className={isActive ? "carousel-thumb is-active" : "carousel-thumb"}
+      <li key={target.id || idx} className={isActive ? "carousel-thumb is-active" : "carousel-thumb"}
           onClick={() => this.props.onSelectTarget(target)}>
         <button className="carousel-thumb__button" ref={(btn) => this.buttonRefs.push(btn)}
           aria-label={`Target Question ${targetNumber}`}>
