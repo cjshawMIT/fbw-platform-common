@@ -8,7 +8,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "test": "babel-istanbul cover ./node_modules/.bin/_mocha -- -r jsdom-global/register $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
+    "test": "babel-istanbul cover ./node_modules/.bin/_mocha -- -r jsdom-global/register -r babel-register $(find . ! -path './node_modules/*' -name '*.unit-spec.js')",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "karma": "karma start --browsers Chrome --log-level debug",
     "jest": "jest"

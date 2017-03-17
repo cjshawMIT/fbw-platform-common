@@ -38,7 +38,8 @@ export function getSectionQuestions (data) {
 
     return axios(options)
     .then(({ data: questions }) => {
-      dispatch(receiveSectionQuestions(questions))
+      dispatch(receiveSectionQuestions(questions));
+      return questions;
     })
     .catch((error) => {
       console.log('error getting section questions', error)

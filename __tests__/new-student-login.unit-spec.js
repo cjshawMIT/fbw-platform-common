@@ -7,6 +7,7 @@ import { authenticateD2LStudent } from '../reducers/Login/authenticateD2L'
 import {logInUser} from '../reducers/Login/logInUser'
 import {RECEIVE_MISSIONS, getMissions} from '../reducers/Mission/getMissions'
 import {RECEIVE_CREATE_TAKE_MISSION, selectOpenMission} from '../reducers/Mission/selectOpenMission'
+import { getSectionQuestions } from '../reducers/Mission/getSectionQuestions'
 import {submitResponse} from '../reducers/Mission/submitResponse'
 
 import thunk from 'redux-thunk'
@@ -114,7 +115,7 @@ describe('student web app', function() {
     })
   })
 
-  it('should be able to select an open mission, i.e. get a taken with questions', done => {
+  it('should be able to select an open mission, i.e. get a taken with sections only', done => {
     const store = mockStore({});
     const dispatch = sinon.spy(store, 'dispatch');
     const expectedAction = {
@@ -140,19 +141,43 @@ describe('student web app', function() {
 
       _.every(assessmentSections, section => {
         section.questions.should.be.a('array');
-        section.questions.length.should.be.at.least(1);
+        // section.questions.length.should.be.at.least(1);
+        section.questions.length.should.be.equal(0);
       });
 
       SECTION_ID = assessmentSections[0].id
-      QUESTION_ID = assessmentSections[0].questions[0].id
-      // don't know if this is right or wrong
-      CHOICE_ID = assessmentSections[0].questions[0].choices[0].id
-
       // ======
       //   this part asserts that the receive action was called.
       // ======
       dispatch.calledWith(expectedAction)
 
+      done()
+    });
+  })
+
+  it('should be able to get questions, for a section', done => {
+    const store = mockStore({});
+    const dispatch = sinon.spy(store, 'dispatch');
+
+    // so here, you'll manually mock in the data that's required, e.g.
+    let data = {
+      bankId: MAT_BANK_ID,
+      sectionId: SECTION_ID,
+      username: LOGGED_IN_USERNAME,
+    };
+
+    // ======
+    //  so this part asserts that the real middleman gave back correct data
+    // ======
+    store.dispatch(getSectionQuestions(data))
+    .then( (res) => {
+      let questions = res;
+
+      questions.length.should.be.at.least(1);
+
+      QUESTION_ID = questions[0].id
+      // don't know if this is right or wrong
+      CHOICE_ID = questions[0].choices[0].id
       done()
     });
   })
@@ -185,7 +210,7 @@ describe('student web app', function() {
   })
 
   function cleanUpPromise(student) {
-    console.log('cleaning up for', student);
+    // console.log('cleaning up for', student);
     let privateBank
     // to clean up, need to grab the actual private bank id
     return chai.request(BASE_URL)
@@ -232,7 +257,7 @@ describe('student web app', function() {
 
     cleanUpPromise(LOGGED_IN_USERNAME)
     .then( res => {
-      console.log('cleaned up for all newly created students');
+      // console.log('cleaned up for all newly created students');
 
       done();
     })
