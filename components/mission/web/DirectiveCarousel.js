@@ -21,7 +21,10 @@ class DirectiveCarousel extends Component {
 
     let displayName = directive ? directive.displayName.text : 'Error. Somehow this outcome is undefined';
 
-    let isActive = idx === this.props.currentDirectiveIndex;
+    // let isActive = idx === this.props.currentDirectiveIndex;
+    // force user to tap on a directive -- because the IDs
+    // returned initially by takeMission?sectionsOnly are un-takable IDs.
+    let isActive = false;
     let thumb = (
       <div key={idx}
           className={isActive ? "carousel-thumb is-active carousel-thumb--directive" : "carousel-thumb carousel-thumb--directive"}>

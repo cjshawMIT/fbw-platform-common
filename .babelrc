@@ -1,5 +1,6 @@
 {
   "presets": [
+    "es2015",
     "airbnb",
     "react-native-stage-0"
   ]
