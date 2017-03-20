@@ -43,12 +43,9 @@ export function selectOpenMission (data) {
     .then((response) => {
       _assessmentSections = response.data;
 
-      return Q.when(convertImagePaths(_assessmentSections))
-    })
-    .then((questionsWithImages) => {
-      dispatch(receiveOpenMission(questionsWithImages));
+      dispatch(receiveOpenMission(_assessmentSections));
 
-      return questionsWithImages;
+      return _assessmentSections;
     })
     .catch((error) => {
       console.log('error getting mission data', error)

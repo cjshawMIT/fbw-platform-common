@@ -50,12 +50,10 @@ export function submitResponse(data) {
       let response = results.data
       response.questionId = data.questionId
       response.choiceIds = [data.choiceId]
-      return convertImagePaths(response)
-    })
-    .then((convertedResponse) => {
-      dispatch(receiveSubmitResponse(convertedResponse));
 
-      return convertedResponse;
+      dispatch(receiveSubmitResponse(response));
+
+      return response;
     })
     .catch((error) => {
       console.log('error submitting response', error);
