@@ -75,9 +75,12 @@ export const filterItemsByTarget = (items) => {
 export function getTargetQuestions (state) {
   let questions
   if (state.mission.currentTarget && state.mission.currentMissionSections) {
-    let directiveQuestions = state.mission.currentMissionSections[state.mission.currentDirectiveIndex].questions
-    let routeQuestions = filterItemsByTarget(directiveQuestions)
-    questions = routeQuestions[targetKey(state.mission.currentTarget)]
+    const currentDirective = state.mission.currentMissionSections[state.mission.currentDirectiveIndex];
+    if (currentDirective && currentDirective.questions) {
+      let directiveQuestions = currentDirective.questions
+      let routeQuestions = filterItemsByTarget(directiveQuestions)
+      questions = routeQuestions[targetKey(state.mission.currentTarget)]
+    }
   }
   return questions
 }
