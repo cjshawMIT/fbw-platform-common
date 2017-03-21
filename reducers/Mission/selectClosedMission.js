@@ -44,15 +44,10 @@ export function selectClosedMission (data) {
     return axios(options)
     .then((response) => {
       resultSections = response.data
-      //console.log('received mission results', response)\
-      return Q.when(convertImagePaths(resultSections))
-    })
-    .then((questionsWithImages) => {
+      //console.log('received mission results', response)
+      dispatch(receiveGetUserMissionResults(resultSections, true))
 
-      // console.log('result sections', resultSections)
-      dispatch(receiveGetUserMissionResults(questionsWithImages, true))
-
-      return questionsWithImages
+      return resultSections
     })
     .catch((error) => {
       // this will get hit by a 500 when the user has no results

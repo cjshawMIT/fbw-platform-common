@@ -45,12 +45,9 @@ export function showAnswer(data) {
       response.showAnswer = true  // to not turn the target icon yellow in targetCarousel
       response.questionId = data.questionId
       response.choiceIds = [data.choiceId]
-      return convertImagePaths(response)
-    })
-    .then((convertedResponse) => {
-      // console.log(convertedResponse)
-      dispatch(receiveShowAnswer(convertedResponse));
-      return convertedResponse
+
+      dispatch(receiveShowAnswer(response));
+      return response
     })
     .catch((error) => {
       console.log('error submitting show answer', error);
