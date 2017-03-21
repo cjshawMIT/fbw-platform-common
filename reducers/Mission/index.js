@@ -149,6 +149,13 @@ export default function missionReducer (state = initialState, action) {
       let questions = _.flatMap(action.missionResult.sections, 'questions');
       let currentTarget = _.find(questions, q => q.itemId === action.question.itemId)
 
+      if (action.question.notAchieved) {
+        // for the case with student results in instructor dashboard
+        currentTarget.notAchieved = action.question.notAchieved
+        currentTarget.total = action.question.total
+        currentTarget.achieved = action.question.achieved
+      }
+
       return _.assign({}, state, {
         currentMissionSections: action.missionResult.sections,
         currentDirectiveIndex: action.currentDirectiveIndex,
