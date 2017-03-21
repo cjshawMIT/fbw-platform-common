@@ -24,7 +24,7 @@ class DirectiveCarousel extends Component {
     // let isActive = idx === this.props.currentDirectiveIndex;
     // force user to tap on a directive -- because the IDs
     // returned initially by takeMission?sectionsOnly are un-takable IDs.
-    let isActive = false;
+    let isActive = this.props.currentDirectiveIndex !== null ? idx === this.props.currentDirectiveIndex : false;
     let thumb = (
       <div key={idx}
           className={isActive ? "carousel-thumb is-active carousel-thumb--directive" : "carousel-thumb carousel-thumb--directive"}>
@@ -75,11 +75,14 @@ class DirectiveCarousel extends Component {
   }
 
   _onSelectDirective = (directiveIndex) => {
-    this.props.onGetSectionQuestions({
-      bankId: this.props.bank.id,
-      sectionId: this.props.currentMissionSections[directiveIndex].id,
-      username: this.props.user.username
-    });
+    if (this.props.currentMissionSections) {
+      // for instructor view, this isn't enabled
+      this.props.onGetSectionQuestions({
+        bankId: this.props.bank.id,
+        sectionId: this.props.currentMissionSections[directiveIndex].id,
+        username: this.props.user.username
+      });
+    }
     this.props.onSelectDirective(directiveIndex);
   }
 }
