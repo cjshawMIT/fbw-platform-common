@@ -75,7 +75,7 @@ class DirectiveCarousel extends Component {
   }
 
   _onSelectDirective = (directiveIndex) => {
-    if (this.props.currentMissionSections) {
+    if (this.props.currentMissionSections && !this.props.viewOnly) {
       // for instructor view, this isn't enabled
       this.props.onGetSectionQuestions({
         bankId: this.props.bank.id,

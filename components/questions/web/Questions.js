@@ -64,13 +64,16 @@ class Questions extends Component {
       }
     }
 
-    let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' ? false : true;
+    let isSubmitEnabled = checkMissionStatus(this.props.mission) === 'over' || this.props.viewOnly ? false : true;
 
     return (
       <li key={questionItem.id} className="questions-list__item">
         <div className="row">
           <div className="medium-8 medium-centered large-8 large-centered columns">
-            <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded} isSubmitEnabled={isSubmitEnabled}/>
+            <QuestionCard question={questionItem}
+                          outcome={outcome}
+                          isExpanded={isExpanded}
+                          isSubmitEnabled={isSubmitEnabled}/>
           </div>
         </div>
 
